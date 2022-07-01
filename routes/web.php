@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('/dashboard', function () {
+    dd('kamu sudah di halaman dashboard');
+})->middleware(['verified']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
